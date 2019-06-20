@@ -15,6 +15,11 @@ public class ExceptionRunner {
 		}catch(Exception e) {
 			System.out.println("Exception occoured"+e);
 		}
+		
+		finally {
+			System.out.println("Finally block executed");
+		}
+		
 	}
 
 }

@@ -18,12 +18,14 @@ public class ArrayListOperation {
 		
 		Employee emp;
 		List<Employee> empList = new ArrayList<Employee>();
+		
 	
 		do {
 			
 			System.out.println("1.Add employee record");
 			System.out.println("2.Remove employee record");
-			System.out.println("3.Display employee record");
+			System.out.println("3.Display All employee record");
+			System.out.println("4.Search for employee record");
 			System.out.println("0.Exit");
 			
 			System.out.println("enter which operation you want to perform");
@@ -55,6 +57,9 @@ public class ArrayListOperation {
 						itr.remove();
 						System.out.println("Employee record successfully deleted....");
 					}
+					else {
+						System.out.println("EMployee record does not found... enter correct empId");
+					}
 				}
 				
 				/*try {
@@ -77,6 +82,44 @@ public class ArrayListOperation {
 				System.out.println(empList);
 				break;
 			
+			case 4:
+			{
+				System.out.println("enter employee empId to search");
+				empId=sc.nextInt();
+				
+				for(Employee empobj:empList) {
+					if(empobj.getEmpId()==empId) {
+						System.out.println(empobj);
+					}
+					else {
+						System.out.println("EMployee record does not found... enter correct empId");
+					}
+				break;
+				}
+			}
+			case 5:
+			{
+				System.out.println("enter employee empId to update");
+				empId=sc.nextInt();
+				
+				for(Employee empobj:empList) {
+					if(empobj.getEmpId()==empId) {
+						System.out.println("enter firstName, LastName, and empId to update Employee record");
+						firstName = sc.next();
+						lastName = sc.next();
+						empId = sc.nextInt();
+						empobj.setEmpId(empId);
+						empobj.setFirstName(firstName);
+						empobj.setLastName(lastName);
+						System.out.println("employee record updated");
+					}
+					else {
+						System.out.println("EMployee record does not found... enter correct empId");
+					}
+				}
+				System.out.println(empList);
+				break;
+			}
 			default:
 				break;
 			}
