@@ -69,20 +69,7 @@ public class ArrayListOperation {
 				}
 				if(!found) {
 					System.out.println("EMployee record does not found... enter correct empId");
-			}
-				
-				/*try {
-				for(Employee empobj:empList) {
-					if(empobj.getEmpId()==empId) {
-						empList.remove(empobj);
-						System.out.println("Employee record successfully deleted....");
-					}
-				}
-				break;
-				}catch(Exception e) {
-					
-				}*/
-				
+			}	
 				break;
 				}
 				
@@ -129,7 +116,7 @@ public class ArrayListOperation {
 				}
 				if(!found) {
 					System.out.println("EMployee record does not found... enter correct empId");
-			}
+				}
 				System.out.println(empList);
 				break;
 			}
@@ -138,5 +125,4 @@ public class ArrayListOperation {
 			}
 		}while(ch!=0);
 	}
-
 }
