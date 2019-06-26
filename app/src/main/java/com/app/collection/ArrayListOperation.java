@@ -1,5 +1,8 @@
 package com.app.collection;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -25,6 +28,7 @@ public class ArrayListOperation {
 			System.out.println("3.Display All employee record");
 			System.out.println("4.Search for employee record");
 			System.out.println("5.Update employee record");
+			System.out.println("6.Read record from text file");
 			System.out.println("0.Exit");
 			
 			System.out.println("enter which operation you want to perform");
@@ -55,6 +59,7 @@ public class ArrayListOperation {
 			case 2:
 			{
 				boolean found=true;
+				if(empList.size()!=0) {
 				System.out.println("enter empId to remove the record");
 				empId = sc.nextInt();
 				
@@ -66,6 +71,10 @@ public class ArrayListOperation {
 						System.out.println("Employee record successfully deleted....");
 						found=true;
 					}
+				}
+				}
+				else {
+					System.out.println("Employee list is empty you cannot remove record....");
 				}
 				if(!found) {
 					System.out.println("EMployee record does not found... enter correct empId");
@@ -120,9 +129,47 @@ public class ArrayListOperation {
 				System.out.println(empList);
 				break;
 			}
+			case 6:
+			{
+				try {
+					Scanner scanner;
+					BufferedReader reader = new BufferedReader(new FileReader("C:\\Users\\mayur.patil\\Desktop\\employee.txt"));	
+					String line=null;
+					int index = 0;
+					 while ((line = reader.readLine()) != null) {
+						 emp = new Employee(firstName, lastName, empId);
+						 scanner = new Scanner(line);
+						 scanner.useDelimiter(",");
+						 while (scanner.hasNext()) {
+							 String data = scanner.next();
+							 if(index == 0) {
+								 emp.setFirstName(data);
+							 }
+							 else if(index==1) {
+								 emp.setLastName(data);
+							 }
+							 else if(index==2) {
+								 emp.setEmpId(Integer.parseInt(data));
+							 }
+							 index ++;
+						}
+						 index=0;
+						 empList.add(emp);
+					}
+					 reader.close();
+				}
+				catch(FileNotFoundException fn) {
+					System.out.println("file not found......."+fn.getMessage());
+				}
+				catch(Exception e) {
+					System.out.println("file exception..."+e.getMessage());
+				}
+				
+				break;
+			}
 			default:
 				break;
 			}
-		}while(ch!=0);
+		} while(ch!=0);
 	}
 }
